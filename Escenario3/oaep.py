@@ -22,7 +22,7 @@ def decrypt_message(encrypted_message, private_key_path):
     # Create a cipher object using OAEP padding
     cipher = PKCS1_OAEP.new(private_key)
 
-    # Decrypt the message
+
     decrypted_message = cipher.decrypt(encrypted_message)
 
     return decrypted_message.decode()

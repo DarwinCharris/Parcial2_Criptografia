@@ -27,4 +27,4 @@ class Client:
             message = oaep.decrypt_message(encrypted_message, "client-keys/private.pem")
             print(message)
 
-Client("localhost", 8086)
+Client("localhost", 5432)

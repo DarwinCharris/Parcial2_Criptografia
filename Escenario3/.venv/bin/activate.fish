@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/paravel/dev/cripto/parcial-3/.venv
+set -gx VIRTUAL_ENV /home/paravel/dev/Parcial2_Criptografia/Escenario3/.venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

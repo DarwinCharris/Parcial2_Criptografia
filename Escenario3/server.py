@@ -1,6 +1,7 @@
 import socket
 from threading import Thread
 import oaep
+import time
 
 class Server:
     def __init__(self, HOST, PORT):
@@ -24,13 +25,25 @@ class Server:
     def send_message(self):
         while True:
             message = input("")
+            start_time = time.time()
             encrypted_message = oaep.encrypt_message(message, "client-keys/public.pem")
+            message_length = len(encrypted_message)
+            end_time = time.time()
+            total_time = end_time - start_time
+            print(f"Encryption time: {total_time:.6f} seconds")
+            print(f"Sending message of length {message_length} bytes")
             self.client_socket.send(encrypted_message)
 
     def recive_message(self):
         while True:
             encrypted_message = self.client_socket.recv(1024)
+            message_length = len(encrypted_message)
+            start_time = time.time()
             message = oaep.decrypt_message(encrypted_message, "server-keys/private.pem")
+            end_time = time.time()
+            total_time = end_time - start_time
+            print(f"Decryption time: {total_time:.6f} seconds")
+            print(f"Received message of length {message_length} bytes")
             print(message)
 
-Server("localhost", 8086)
+Server("localhost", 5432)
